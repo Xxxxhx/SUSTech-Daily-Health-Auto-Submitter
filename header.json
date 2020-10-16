@@ -1,0 +1,15 @@
+{
+    "Host": "dailyhealth-api.sustech.edu.cn",
+    "Proxy-Connection": "keep-alive",
+    "Content-Length": "825",
+    "Accept": "application/json, text/plain, */*",
+    "userId": "Your sid",
+    "accessToken": "Your access token",
+    "X-Requested-With": "XMLHttpRequest",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36 Edg/86.0.622.38",
+    "Content-Type": "application/json",
+    "Origin": "http://dailyhealth.sustech.edu.cn",
+    "Referer": "http://dailyhealth.sustech.edu.cn/",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept-Language": "en-US,en;q=0.9"
+}
