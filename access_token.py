@@ -10,7 +10,7 @@ def find_access_token():
     report_pos = (890, 220)
     enter_pos = (1135, 405)
     browser_pos = (640, 730)
-    link_pos = (360, 0)
+    link_pos = (175, 55)
     
     handle = win32gui.FindWindow('WeChatMainWndForPC', '微信')
     win32api.keybd_event(13, 0, 0, 0)
@@ -43,14 +43,16 @@ def find_access_token():
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
     time.sleep(0.05)
+
+    web_handle = win32gui.FindWindow('CefWebViewWnd', '微信')
+    web_pos = win32gui.GetWindowRect(web_handle)
+
     # copy the link
-    win32api.SetCursorPos((pos[0] + link_pos[0], pos[1] + link_pos[1]))
+    win32api.SetCursorPos((web_pos[0] + link_pos[0], web_pos[1] + link_pos[1]))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
     time.sleep(0.15)
     # close the internal browser
-    web_handle = win32gui.FindWindow('CefWebViewWnd', '微信')
-    web_pos = win32gui.GetWindowRect(web_handle)
     win32api.SendMessage(web_handle, win32con.WM_CLOSE, 0, 0)
     time.sleep(0.05)
     # minimize the window
@@ -58,7 +60,6 @@ def find_access_token():
 
     win32clipboard.OpenClipboard()
     link = win32clipboard.GetClipboardData(win32con.CF_UNICODETEXT)
-    # print(link)
     access_token = link[link.rfind('=') + 1:]
 
     return access_token
